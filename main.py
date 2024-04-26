@@ -4,6 +4,7 @@ import csv
 import os
 from dotenv import load_dotenv
 import random
+from borneoBulettin import scrape_and_save_news  # Import the function
 
 # Load token from environment variables
 load_dotenv()
@@ -61,7 +62,9 @@ async def on_message(message):
         return
     
     if message.content.startswith('!news'):  # Check if the message starts with the prefix '!news'
-        await send_category_selection(message.channel)
+        await message.channel.send("Fetching latest news, please wait...")
+        scrape_and_save_news()  # Call the function to scrape news
+        await send_category_selection(message.channel)  # Proceed with sending the news
     elif message.content.startswith('!help'):  # Check if the message starts with the prefix '!help'
         await message.channel.send("Available Commands:\n- **!news**: Get the latest news from Borneo Bulletin.\n- **?news**: Get the latest news from Borneo Bulletin via DM.")
     elif message.content.startswith('!'):
@@ -74,6 +77,8 @@ async def on_message(message):
         response = random.choice(responses)
         await message.channel.send(response)
     elif message.content.startswith('?news'):  # Check if the message starts with the prefix '?news' for DM
+        await message.author.send("Fetching latest news, please wait...")
+        scrape_and_save_news()  # Call the function to scrape news
         await send_category_selection(message.author)  # Send the category selection message as DM
 
 def main():

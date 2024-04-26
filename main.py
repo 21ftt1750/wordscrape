@@ -6,11 +6,9 @@ from dotenv import load_dotenv
 import random
 from borneoBulettin import scrape_and_save_news  # Import the function
 
-# Load token from environment variables
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-# Bot setup
 intents = discord.Intents.default()
 intents.message_content = True
 client = commands.Bot(command_prefix="!", intents=intents)

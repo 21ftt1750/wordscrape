@@ -1,0 +1,9 @@
+/.env
+/borneo_bulletin.csv
+/chromedriver.exe
+/cookie.py
+/scraped_books.csv
+/scraped_quotes.csv
+/test1.py
+/test2.py
+/__pycache__

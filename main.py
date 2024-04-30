@@ -29,7 +29,7 @@ async def send_category_selection(ctx, selected_category=None):
     categories = ['national', 'sea', 'world', 'business', 'technology', 'lifestyle', 'entertainment', 'sports', 'features']
     view = discord.ui.View()
     for category in categories:
-        emoji = '📰'  
+        emoji = '📜'  
         button = discord.ui.Button(label=f" {category.capitalize()} {emoji}", style=discord.ButtonStyle.secondary)
         button.callback = create_button_callback(category)
         view.add_item(button)
